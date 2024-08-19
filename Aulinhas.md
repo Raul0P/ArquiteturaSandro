@@ -139,4 +139,71 @@ rather than a specific implementation pattern."*
 *(Software Architecture in Practice, p. 207)*
 
 
+**Microservices**
+
+É um estilo arquitetural que estrutura uma aplicação como um conjunto de pequenos
+serviços independentes, cada um executando um processo único e comunicando-se
+por meio de APIs bem definidas. Cada microserviço é desenvolvido, implantado e
+escalado de forma independente, permitindo uma maior flexibilidade e agilidade no
+desenvolvimento e na manutenção de software.
+
+
+
+Características (Prova):
+
+- Desenvolvimento independente;
+- Desenvolvimento poliglota;
+- Desempenho e escalabilidade;
+- Descentralização;
+
+*Trade-offs*
+
+- Complexidade do gerenciamento;
+- Latência na comunicação entre microserviços;
+- Consistência de dados;
+- Custos operacionais e segurança;
+
+Repositório utilizando Microservices: https://github.com/Sandrolaxx/dfmicroservices
+
+Artigo de uso de microservices na Amazon, Netflix e etc: https://blog.dreamfactory.com/microservices-examples
+
+- *Pipes and Filters:* 
+
+Organiza o sistema como uma
+série de filtros conectados por pipes (tubos). Cada
+filtro é responsável por processar dados, enquanto
+os pipes transportam os dados entre os filtros. Este
+estilo é ideal para sistemas que processam dados
+em etapas sequenciais, como pipelines de
+processamento de dados. Exemplo clássico é o
+shell do linux:
+
+$ ls | grep b | sort -r | tee arquivo.out | wc -l
+
+
+- *Representational State Transfer (REST):*
+
+É um estilo arquitetural para sistemas
+distribuídos que utiliza o protocolo HTTP e
+opera sobre os conceitos de recursos e
+representações. 
+
+Em REST, os recursos são identificados
+por URLs e manipulados usando
+métodos HTTP.
+
+- *Service-Oriented Architecture (SOA):*
+
+Estilo arquitetural que organiza o sistema
+como um conjunto de serviços independentes que se comunicam entre si por
+meio de interfaces bem definidas. Cada serviço é responsável por uma parte
+específica da funcionalidade do sistema e pode ser acessado remotamente
+por outros serviços ou aplicações. Possuem o mesmo banco e são uma parte
+completa do domínio.
+
+
+
+
+
+
 
