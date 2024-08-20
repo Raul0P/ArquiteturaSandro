@@ -201,6 +201,170 @@ específica da funcionalidade do sistema e pode ser acessado remotamente
 por outros serviços ou aplicações. Possuem o mesmo banco e são uma parte
 completa do domínio.
 
+**Clean Arch & Hexagonal**
+
+- *Arquitetura Limpa*
+
+Este estilo de arquitetura enfatiza a separação de preocupações
+e a independência dos frameworks, interfaces de usuário, bancos
+de dados e outros detalhes externos. Podemos considerar como
+um avanço da onion architeture.
+
+
+
+*"The Clean Architecture is an architectural style that can be
+applied to a wide range of applications. It emphasizes the
+separation of concerns, making sure that the business rules are
+isolated from frameworks, user interfaces, and external agencies."*
+(Clean Architecture: A Craftsman's Guide to Software Structure
+and Design, p. 18).
+
+
+- *Hexagonal-Ports and Adapters*
+
+Foi proposta por Alistair Cockburn, visa criar sistemas de software que sejam altamente desacoplados e testáveis, permitindo que as partes centrais da aplicação permaneçam independentes de suas interfaces de entrada e saída.
+
+![exemplo](https://media.canva.com/v2/image-resize/format:PNG/height:450/quality:100/uri:s3%3A%2F%2Fmedia-private.canva.com%2FqGs6Y%2FMAGLqjqGs6Y%2F1%2Fp.png/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAH3TYO2nqF3tau-ZOjHCP1ar0a24HekiRS53MoFmGi-8&exp=1724123059&osig=AAAAAAAAAAAAAAAAAAAAAOnQzLPns9qShDnuV6r4C8ZZUXWIGt4D0zBh6eDcFDYR&signer=media-rpc&x-canva-quality=screen)
+
+
+**Comparação entre estilos**
+
+- **Clean Arch x Hexagonal x Onion:**
+
+Layered é criticada por focar no banco de dados, causando dependências transitivas, limites
+confusos e dificuldades na manutenção e testes. Já a arquitetura hexagonal prioriza a lógica de
+negócios, desenvolvendo-a antes da persistência dos dados. Ela se adapta melhor a aplicativos
+complexos com componentes adicionais, como APIs REST, evitando dependências excessivas e
+duplicação da lógica de negócios.
+
+A Arquitetura Limpa coloca a lógica de negócios no centro, com adaptadores de interface ao redor
+conectando a interface do usuário, banco de dados e outros componentes externos. Todas as
+dependências do código apontam para o núcleo, seguindo o Princípio de Inversão de Dependência.
+
+Arquitetura Hexagonal mapeia-se quase diretamente para a Arquitetura Limpa.
+
+Arquitetura Limpa pode ser vista como
+uma evolução da Arquitetura Onion e
+Hexagonal, devido à sua abordagem
+mais detalhada e abrangente para a
+organização de sistemas de software.
+
+A Arquitetura Limpa refina e expande os
+conceitos da Arquitetura Hexagonal,
+oferecendo uma estrutura clara e
+sistemática para a construção de
+aplicações desacopladas, modulares e
+testáveis.
+
+**Serverless**
+
+Arquitetura serverless é um modelo de computação em nuvem onde os provedores
+de nuvem gerenciam a execução do código, alocando dinamicamente os recursos
+necessários. 
+
+
+
+Esse modelo permite que os desenvolvedores se concentrem mais na lógica de
+negócios e menos na infraestrutura, uma vez que tudo isso é responsabilidade do
+provedor de serviços de nuvem.
+
+- Características:
+
+    - Execução sob demanda, escalabilidade automática;
+    - Custo-eficiência, gerenciamento simplificado;
+- Funções como Serviço (FaaS)
+
+    - AWS Lambda, Google Cloud Functions, e Azure Functions
+- Backend como Serviço (BaaS)
+
+    - Firebase Authentication, Firestore e Amazon S3
+
+
+Podemos encontrar muitos dos conceitos no artigo de Mike Roberts.
+https://www.canva.com/design/DAGLliICAKQ/yMvfg3Vkbr4K_0FTKyfyBg/edit#:~:text=Podemos%20encontrar%20muitos%20dos%20conceitos%20no%20artigo%20de%20Mike%20Roberts.
+
+**Qual o estilo
+arquitetural correto?**
+
+Depende....
+
+Temos de levar em conta o problema que queremos resolver,
+budget do projeto, senioridade do time, isso também vale para
+quando buscamos alterar o estilo atual.
+
+### Padrões Arquiteturais
+
+São soluções recorrentes para problemas específicos de design em um contexto
+arquitetural. Eles são mais específicos que estilos arquiteturais e fornecem detalhes
+sobre a implementação.
+    
+- Solucionam problemas específicos
+- Guias de implementação
+- Reutilização de soluções
+
+**MVC - Model, View e Controller**
+
+É um padrão de design de software que separa uma aplicação em três
+partes principais:
+
+- Model (Modelo):
+    - Representa os dados e a lógica de negócios.
+    - Gerencia o comportamento e os dados da aplicação.
+- View (Visão):
+    - Apresenta os dados ao usuário.
+    - Atualiza a interface do usuário quando o modelo muda.
+- Controller (Controlador):
+    - Recebe a entrada do usuário.
+    -   Interage com o modelo e seleciona a visão para apresentar a saída.
+
+
+Benefícios:
+
+Separação de preocupações: Facilita a manutenção e a escalabilidade.
+Reutilização de código: Componentes podem ser reutilizados em
+diferentes partes da aplicação.
+
+**Plug-ins**
+
+Núcleo e plug-ins ou extensões que adicionam funcionalidades. O núcleo fornece a
+base e a infraestrutura, enquanto os plug-ins fornecem funcionalidades específicas.
+
+
+
+Alguns locais citam como estilo arquitetural, porém partilho da visão de que ela
+como solução não possui "tamanho" suficiente para ser um estilo completo, se
+enquadrando como padrão que pode ser composto em estilos arquiteturais como
+o Layered e Componend-based.
+
+
+
+Exemplos: Navegadores, IDE’s como Eclipse.
+
+Artigoo: https://medium.com/omarelgabrys-blog/plug-in-architecture-dec207291800
+
+**Three-tier**
+
+A arquitetura de três camadas é um modelo de arquitetura de software que separa
+uma aplicação em três camadas físicas distintas: a camada de apresentação
+(Presentation Tier), a camada de lógica de negócios (Business Logic Tier), e a
+camada de dados (Data Tier). 
+
+
+
+Essas camadas são distribuídas em diferentes servidores ou máquinas para
+melhorar a escalabilidade, a segurança e a manutenibilidade do sistema.
+
+
+
+- Benefícios
+
+    - Escalabilidade
+    - Segurança
+    - Manutenibilidade
+    - Flexibilidade e reutilização
+
+
+
 
 
 
