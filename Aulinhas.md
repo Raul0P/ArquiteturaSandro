@@ -365,7 +365,225 @@ melhorar a escalabilidade, a segurança e a manutenibilidade do sistema.
 
 
 
+# Design Patterns
 
+#### Tópicos
+
+- Visão geral
+- Benefícios
+- Três categorias
+- Padrões criacionais
+- Singleton
+- Abstract Fatory
+- Factory Method
+- Prototype
+- Builder
+
+
+#### Visão Geral
+
+**Design Patterns (ou padrões de projeto) são soluções típicas para
+problemas recorrentes no desenvolvimento de software**. Eles
+representam boas práticas adotadas por desenvolvedores
+experientes e foram criados para facilitar a manutenção,
+escalabilidade e a clareza do código.
+
+*"Design Patterns are descriptions of communicating
+objects and classes that are customized to solve a
+general design problem in a particular context."* 
+ Gamma et al., 1995, p. 3
+
+Segundo Christoper Alexander “cada padrão descreve um problema do nosso
+ambiente e o cerne da sua solução, de tal forma que você possa usar essa solução
+mais de um milhão de vezes, sem nunca fazê-lo da mesma maneira” [AIS+77, pág. x].
+
+
+
+Arquiteto britânico, o qual foi o primeiro a mapear, o que ele nomeou dê a linguagem
+de padrões. Nos termos de Alexander, um padrão é uma regra de três partes, que
+expressa uma relação entre um determinado contexto, um problema e uma solução
+
+De posse desses conhecimentos em 1995 Erich Gamma, John Vlissides,
+Ralph Johnson e Richard Helm publicaram “Design Patterns: Elements of
+Reusable Object-Oriented Software”, onde foram descritos 23 padrões que
+resolviam vários problemas de design orientado a objetos e se tornou um
+best-seller muito rapidamente. Devido ao seu nome ser muito extenso o livro
+foi batizado de GoF (Gang of Four).
+
+##### Quais o benefícios?
+
+- Reutilização de
+código
+
+     - Design patterns promovem a
+    reutilização de soluções
+    testadas, evitando a
+    necessidade de "reinventar a
+    roda" e economizando tempo
+    durante o desenvolvimento.
+
+- Manutenção 
+
+    - O uso de padrões facilita a
+    manutenção do código, pois as
+    soluções são reconhecíveis e
+    compreendidas por
+    desenvolvedores familiarizados
+    com os padrões.
+
+- Comunicação
+
+    - Ao usar design patterns,
+    desenvolvedores podem se
+    comunicar de maneira mais
+    eficiente, referindo-se a uma
+    solução complexa com um
+    nome simples e amplamente
+    compreendido, como "Factory
+    Method" ou "Observer".
+
+- Escalabilidade e
+flexibilidade
+
+    - Ajudam a criar sistemas
+    facilmente estendidos ou
+    modificados à medida que
+    novos requisitos surgem
+
+##### Onde não utilizar?
+
+Mesmo sendo ferramentas poderosas, eles não devem ser aplicados de maneira indiscriminada:
+
+- Complexidade desnecessária: Aplicar um pattern em um problema que pode ser resolvido com uma solução mais simples pode adicionar complexidade desnecessária ao código.
+
+- Problemas mal definidos: Não tente forçar um padrão em um problema que não é claramente compreendido. Primeiro, compreenda completamente o problema antes de buscar uma solução padrão.
+
+- Overengineering **microservices**: Evite overengineering, que é a tendência de criar uma solução mais complexa do que o necessário, por aplicar padrões de design onde não são necessários.
+
+#### Três categorias de Patterns
+
+- Criacionais
+    - Tratam do processo de
+criação de objetos,
+promovendo a flexibilidade e
+a reutilização de código.
+
+- Estruturais
+    - Lidam com a composição
+de classes ou objetos,
+formando estruturas
+maiores de forma
+eficiente.
+
+- Comportamentais
+    - Lidam com a
+comunicação entre os
+objetos e com a maneira
+como eles interagem e
+suas responsabilidades.
+
+#### Singleton
+
+É um padrão de design criacional que garante que uma classe tenha apenas uma única
+instância e fornece um ponto global de acesso a essa instância. 
+
+
+
+Ele é útil em situações onde é importante que apenas um objeto de uma classe seja criado,
+como em gerenciadores de recursos, conexões de banco de dados ou configurações globais
+de uma aplicação.
+
+Características:
+
+- Única instância: Apenas uma instância da classe é
+criada durante o ciclo de vida da aplicação.
+- Controle de acesso: A classe controla como e
+quando sua única instância é criada.
+- Ponto de acesso global: Fornece uma forma global
+de acessar essa instância única.
+
+
+#### Abstract Factory
+
+Padrão que permite criar famílias de objetos relacionados ou dependentes sem especificar
+suas classes concretas. 
+
+Ele define uma interface para criar diferentes tipos de objetos (como botões e checkboxes),
+permitindo que o cliente trabalhe com essas famílias de objetos de forma independente de
+suas implementações específicas.
+
+Características:
+
+- Criação de famílias de objetos: Permite criar grupos de
+objetos relacionados que devem ser usados juntos.
+- Independência de implementação: O cliente usa
+interfaces abstratas, sem saber quais classes
+concretas estão sendo instanciadas.
+- Flexibilidade: Facilita a troca entre diferentes famílias
+de objetos, como mudar a interface do usuário de
+Windows para macOS sem alterar o código cliente.
+
+#### Factory Method
+
+Define um método para criar objetos em uma classe, permitindo que as subclasses decidam
+qual classe concreta será instanciada.
+
+
+
+Em vez de instanciar objetos diretamente com new, o Factory Method delega essa
+responsabilidade para métodos especializados, oferecendo flexibilidade para criar diferentes
+tipos de objetos.
+
+Características:
+
+- Delegação da criação: Define um método para criar
+objetos, delegando às subclasses a decisão de qual
+classe concreta instanciar.
+- Desacoplamento: Desacopla a criação de objetos da sua
+utilização, facilitando a adição de novas classes sem
+modificar o código existente.
+- Flexibilidade: Permite que uma classe defina a interface
+de criação, enquanto subclasses concretas implementam
+a lógica específica para diferentes tipos de produtos
+
+#### Prototype
+
+Permite criar novos objetos copiando instâncias existentes (protótipos), ao invés de
+instanciar novos objetos do zero. 
+
+Ele é útil quando a criação direta de um objeto é cara (em termos de tempo ou recursos) ou
+quando você deseja evitar subclasses para criar diferentes instâncias.
+
+Características:
+
+- Clonagem de objetos: Cria novos objetos copiando
+(clonando) instâncias existentes, sem depender de
+classes concretas.
+- Flexibilidade: Permite criar objetos complexos com uma
+configuração inicial específica, evitando a repetição de
+código ou configurações.
+- Independência de implementação: Você pode criar
+novos objetos sem depender de suas classes concretas,
+utilizando cópias de protótipos existentes.
+
+#### Builder
+
+Permite a construção de objetos complexos passo a passo. Ele separa o processo de
+construção do objeto da sua representação, permitindo criar diferentes representações do
+mesmo objeto.
+
+Características:
+
+- Construção passo a passo: Permite criar objetos
+complexos em etapas, adicionando um nível de
+controle sobre o processo de construção.
+- Separação de preocupações: Separa a lógica de
+construção do objeto (Builder) de sua representação
+final, permitindo que o mesmo processo construa
+diferentes tipos de objetos.
+- Flexibilidade: Facilita a criação de objetos com
+configurações variadas sem precisar de múltiplos
+construtores ou parâmetros opcionais.
 
 
 
